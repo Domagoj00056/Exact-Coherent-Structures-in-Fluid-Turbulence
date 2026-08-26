@@ -4,9 +4,7 @@
 
 **Author:** Domagoj  
 **Supervisor:** Dr Dan Lucas
-### P1 — Periodic Orbit
 
-[🎥 Watch the P1 vorticity–I–D animation](PO_vorticity_DI_GitHub_2.mp4)
 ---
 ## Overview
 
@@ -16,7 +14,7 @@ The study considers two-dimensional **Kolmogorov flow** at Reynolds number $Re =
 
 In particular, the project investigates whether invariant solutions can be identified in the **high-dissipation, low-probability regions** of the turbulent trajectory, where close recurrences are comparatively rare.
 
-The approach combines recurrence analysis with the **Newton–GMRES–Hookstep** method to refine near-recurrent flow fields into exact invariant solutions.
+The approach combines recurrence analysis with the **Newton–GMRES–Hookstep** method to refine near-recurrent flow fields into exact invariant solutions. ![All invariant flows](https://github.com/Domagoj00056/Exact-Coherent-Structures-in-Fluid-Turbulence/blob/main/All_invariant_flows.png)
 
 ---
 
