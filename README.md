@@ -11,11 +11,7 @@
 
 This project investigates **exact coherent structures in turbulent flow** from a dynamical-systems perspective.
 
-The study considers two-dimensional **Kolmogorov flow** at Reynolds number
-
-\[
-Re = 40,
-\]
+The study considers two-dimensional **Kolmogorov flow** at Reynolds number $Re = 40$.
 
 and focuses on identifying recurrent and invariant solutions embedded within the turbulent dynamics.
 
