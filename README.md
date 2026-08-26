@@ -4,7 +4,9 @@
 
 **Author:** Domagoj  
 **Supervisor:** Dr Dan Lucas
+### P1 — Periodic Orbit
 
+[🎥 Watch the P1 vorticity–I–D animation](PO_vorticity_DI_GitHub_2.mp4)
 ---
 ## Overview
 
