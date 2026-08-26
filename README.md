@@ -27,7 +27,7 @@ We consider the incompressible Navier–Stokes equations body-forced by $\sin(4y
 
 ## Main Results
 
-A DNS trajectory of approximately \(10^4\) time units was analysed to generate initial guesses for invariant solutions.
+A DNS trajectory of approximately $10^4$ time units was analysed to generate initial guesses for invariant solutions.
 
 From **445 initial guesses**, **14 converged solutions** were obtained, corresponding to **8 unique invariant solutions**.
 
