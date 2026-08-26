@@ -34,7 +34,7 @@ These included:
 
 A particular focus was placed on solutions extending into the high-dissipation region of the turbulent dynamics.
 
-Two of the recovered relative periodic orbits, **R3 and R4**, reach
+Two of the recovered relative periodic orbits, **R3 and R4**, have
 
 $$
 \bar D = 0.1905
