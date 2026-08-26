@@ -50,40 +50,16 @@ respectively.
 
 These solutions extend substantially into the high-dissipation region and were not matched to corresponding invariant solutions in the literature surveyed for the dissertation.
 
-The periodic orbit **P1** closely matches the previously reported \(P_2\) solution of Chandler & Kerswell (2013), providing a useful comparison with earlier work.
-
----
-
-## Visualisation
-
-The \(I-D\) plane shows the energy input and dissipation of the flow, with the DNS probability density shown in the background.
-
-The invariant solutions are then plotted as trajectories through this plane.
-
-The accompanying vorticity visualisations show the corresponding evolution of the physical flow field.
-
-### Periodic orbit in the typical turbulent region
-
-This animation shows a periodic orbit located predominantly in the high-probability region of the DNS.
-
-### High-dissipation recurrent solution
-
-This animation shows a relative periodic orbit recovered by targeting the low-probability, high-dissipation region of the turbulent dynamics.
-
----
+The periodic orbit P1 closely matches the previously reported \(P_2\) solution of Chandler & Kerswell (2013), while the travelling wave TW1 corresponds closely to a solution identified by Farazmand (2016). These comparisons provide useful validation of the numerical approach. In contrast, R3 and R4 extend into the high-dissipation region of the turbulent dynamics and may represent previously unreported relative periodic orbits.
 
 ## Method
 
 The computational workflow can be summarised as:
 
-1. Perform direct numerical simulation (DNS) of Kolmogorov flow.
-2. Monitor the dissipation and identify high-dissipation events.
-3. Search for approximate recurrences within the DNS trajectory.
-4. Use the recurrent flow fields as initial guesses.
-5. Refine the guesses using Newton–GMRES–Hookstep.
-6. Identify converged invariant solutions.
-7. Remove duplicates and classify the resulting solutions.
-8. Analyse their location within the turbulent \(I-D\) distribution.
+1. Perform DNS of two-dimensional Kolmogorov flow and monitor the dissipation.
+2. Target high-dissipation events and identify near recurrences using the modified recurrence function $R_K$.
+3. Refine near-recurrent states into exact invariant solutions using Newton–GMRES–Hookstep.
+4. Classify and analyse the converged solutions 
 
 ---
 
@@ -95,6 +71,17 @@ The complete MSc dissertation is available here:
 
 ---
 
+
+
+## Related Work
+
+This project builds on previous work on recurrent and invariant solutions in turbulent Kolmogorov flow, including:
+
+- Chandler & Kerswell (2013), *Invariant recurrent solutions embedded in a turbulent 2D Kolmogorov flow*.
+- Farazmand (2016), work on the computation of invariant solutions using adjoint-based methods.
+- Redfern, Lazer & Lucas (2024), work investigating dynamically relevant recurrent flows and high-dissipation events.
+
+---
 ## Code
 
 The main computational work was carried out in Python.
@@ -110,31 +97,8 @@ The repository contains the relevant notebooks and Python scripts used for:
 
 ---
 
-## Related Work
-
-This project builds on previous work on recurrent and invariant solutions in turbulent Kolmogorov flow, including:
-
-- Chandler & Kerswell (2013), *Invariant recurrent solutions embedded in a turbulent 2D Kolmogorov flow*.
-- Farazmand (2016), work on the computation of invariant solutions using adjoint-based methods.
-- Redfern, Lazer & Lucas (2024), work investigating dynamically relevant recurrent flows and high-dissipation events.
-
----
-
 ## Acknowledgements
 
 I would like to thank **Dr Dan Lucas** for his supervision and guidance throughout the project, and the **School of Mathematics at the University of St Andrews** for the opportunity to work on this project.
 
----
 
-## Repository Structure
-
-```text
-.
-├── Dissertation.pdf
-├── README.md
-├── code/
-│   ├── Kflow-NGh.ipynb
-│   ├── functions.py
-│   └── parameters.py
-├── figures/
-└── animations/
