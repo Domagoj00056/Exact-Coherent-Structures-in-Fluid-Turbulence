@@ -19,9 +19,10 @@ The approach combines recurrence analysis with the **Newton–GMRES–Hookstep**
 
 ---
 
-## Abstract
+**Abstract**
 
 We consider the incompressible Navier–Stokes equations body-forced by $\sin(4y)\hat{x}$ on the torus $(x,y)\in[0,2\pi]^2$, with the aim of extracting unstable recurrent flows from high-dissipation regions. Each recurrent flow describes a closed cycle within the state space and, when considered collectively, may provide a framework for describing long-time turbulent dynamics and statistics. In particular, unstable periodic orbits (UPOs) and relative periodic orbits (RPOs) represent recurrent behaviour within the flow, capturing recurring patterns of evolution within the turbulent dynamics. Near-recurrent episodes are identified from DNS using the modified recurrence function $R_K$, and subsequently converged to exact invariant solutions using the Newton–GMRES–Hookstep method. High-dissipation regions, corresponding to extreme bursting events, contain fewer close recurrences, making them more difficult to identify using the recurrence approach. A DNS trajectory of duration $10^4$ was analysed, producing 445 initial guesses, of which 14 converged to eight unique invariant solutions.
+
 ---
 
 ## Main Results
