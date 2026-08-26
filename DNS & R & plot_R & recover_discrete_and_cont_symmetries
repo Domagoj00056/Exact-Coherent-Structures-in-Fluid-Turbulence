@@ -1,0 +1,205 @@
+import numpy as np
+from numpy.fft import rfft2, irfft2
+
+
+def dns(omega0, Lx, Ly, Nx, Ny, n, Re, tend, dt):
+
+    omega = omega0.copy()
+    D_lam = Re / (2*n**2)
+    N = Nx*Ny                                # rfft / N and irfft * N
+
+    nx = np.arange(Nx)                       # if Nx=128: 0 1...127
+    my = np.arange(Ny//2 + 1)                # 0 1...64
+    nx[Nx//2 + 1:] -= Nx                     # 0 1...64 -63...-1
+
+    # Fourier wavenumbers
+    kx = 2*np.pi*nx/Lx                       # shape (128,)
+    ky = 2*np.pi*my/Ly                       # shape (65,)
+
+    # spectral diffusion operator
+    K = kx[:, None]**2 + ky[None, :]**2
+    G = K / Re
+
+    # used in R_min
+    KX = kx[:, None]                          # shape (128, 1)
+    KY = ky[None, :]                          # shape (1, 65)
+
+    denom = K.copy()
+    denom[0, 0] = 1.0
+
+    def u_and_v_stream(Omega):
+        phi_hat = Omega.copy()
+        phi_hat /= denom
+        phi_hat[0, 0] = 0.0
+
+        u_hat = 1j * ky[None, :] * phi_hat
+        v_hat = -1j * kx[:, None] * phi_hat
+
+        u = irfft2(
+            u_hat,
+            s=(Nx, Ny)
+        ) * N
+
+        v = irfft2(
+            v_hat,
+            s=(Nx, Ny)
+        ) * N
+
+        return u, v
+
+    mask = (
+        nx[:, None]**2 + my[None, :]**2
+    ) <= (Nx / 3)**2                         # filter
+
+    forcing = rfft2(
+        -n*np.cos(n*Y)
+    ) / N                                     # force input
+
+    def f(Omega):
+        u, v = u_and_v_stream(Omega)
+
+        omega = (
+            irfft2(
+                Omega,
+                s=(Nx, Ny)
+            ) * N
+        )
+
+        nonlinear = -1j * (
+            kx[:, None] * rfft2(u * omega) / N
+            +
+            ky[None, :] * rfft2(v * omega) / N
+        )
+
+        nonlinear *= mask
+
+        return nonlinear + forcing
+
+    Omega = rfft2(omega) / N
+
+    C1 = 1.0 / (1.0 + dt * G / 2)
+    C2 = 1.0 - dt * G / 2
+
+    M = int(tend / dt)
+
+    for _ in range(M):
+
+        F = f(Omega)
+
+        # Euler predictor
+        Omega_pred = C1 * (
+            C2 * Omega
+            +
+            dt * F
+        )
+
+        # Crank-Nicolson + Heun
+        Omega = C1 * (
+            C2 * Omega
+            +
+            (dt / 2) * (
+                f(Omega_pred) + F
+            )
+        )
+
+    return (
+        irfft2(
+            Omega,
+            s=(Nx, Ny)
+        ) * N
+    )
+def R_D_t_T_slices(t, T):
+    Omega_now = Omega_history[t]
+    Omega_old = Omega_history[t - T]
+
+    best = np.inf
+
+    phi_t = np.angle(Omega_now[1, 0])
+    phi_t_T = np.angle(Omega_old[1, 0])
+
+    phase_t = np.exp(-1j * KX * phi_t)
+    phase_t_T = np.exp(-1j * KX * phi_t_T)
+
+    numerator = np.sum(
+        K * np.abs(
+            Omega_now * phase_t
+            -
+            Omega_old * phase_t_T
+        )**2
+    )
+
+    denominator = np.sum(
+        K * np.abs(Omega_now)**2
+    )
+
+    R = numerator / denominator
+    best = min(best, R)
+
+    return best
+
+
+def compute_R(Omega_history, Tmax, dt, R_function):
+
+    Nt = len(Omega_history)
+
+    # Maximum lag in snapshots
+    max_lag = min(
+        int(Tmax / dt),
+        Nt - 1
+    )
+
+    R = np.full(
+        (Nt, max_lag + 1),
+        np.nan
+    )
+
+    for i in range(Nt):
+
+        print(
+            f"Processing t = {i}/{Nt - 1}"
+        )
+
+        lag_max = min(
+            max_lag,
+            i
+        )
+
+        for lag in range(
+            lag_max + 1
+        ):
+
+            R[i, lag] = R_function(
+                i,
+                lag
+            )
+
+    return R
+
+
+def get_s_m(Omega0, Omega_T):
+
+    SxIn_Dan = np.angle(
+        Omega_T[1, 0]
+        /
+        Omega0[1, 0]
+    )
+
+    R_min = np.inf
+
+    for m in range(n):
+
+        phase = np.exp(
+            1j * 2 * np.pi * m * KY / n
+        )
+
+        R = R_D_t_T_slices(
+            Omega0,
+            Omega_T * phase
+        )
+
+        if R < R_min:
+
+            R_min = R
+            m_best = m
+
+    return SxIn_Dan, m_best
