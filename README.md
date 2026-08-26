@@ -14,7 +14,10 @@ The study considers two-dimensional **Kolmogorov flow** at Reynolds number $Re =
 
 In particular, the project investigates whether invariant solutions can be identified in the **high-dissipation, low-probability regions** of the turbulent trajectory, where close recurrences are comparatively rare.
 
-The approach combines recurrence analysis with the **Newton–GMRES–Hookstep** method to refine near-recurrent flow fields into exact invariant solutions. ![All invariant flows](https://github.com/Domagoj00056/Exact-Coherent-Structures-in-Fluid-Turbulence/blob/main/All_invariant_flows.png)
+The approach combines recurrence analysis with the **Newton–GMRES–Hookstep** method to refine near-recurrent flow fields into exact invariant solutions. 
+
+The figure below shows the identified invariant solutions plotted in the \(I\)–\(D\) plane, with the DNS probability density function shown as a grey background. This illustrates where the invariant solutions lie relative to the regions of the turbulent dynamics most frequently visited by the DNS.
+![All invariant flows](https://github.com/Domagoj00056/Exact-Coherent-Structures-in-Fluid-Turbulence/blob/main/All_invariant_flows.png)
 
 ---
 
