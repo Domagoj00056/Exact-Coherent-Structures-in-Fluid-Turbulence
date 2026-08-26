@@ -74,7 +74,7 @@ The computational workflow can be summarised as:
 
 Vorticity evolution shown alongside the trajectory of **P1** in the $I-D$ plane. The grey background represents the DNS probability distribution.
 
-[**▶ View animation**](PO_vorticity_DI_LinkedIn.mp4)
+[**▶ View animation**]([PO_vorticity_DI_LinkedIn.mp4](https://github.com/Domagoj00056/Exact-Coherent-Structures-in-Fluid-Turbulence/blob/main/PO_vorticity_DI_GitHub_2.mp4))
 
 
 ## Dissertation
