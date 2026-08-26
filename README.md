@@ -67,7 +67,7 @@ The computational workflow can be summarised as:
 
 The complete MSc dissertation is available here:
 
-**[Download the dissertation](Dissertation.pdf)**
+**[Download the dissertation](https://github.com/Domagoj00056/Exact-Coherent-Structures-in-Fluid-Turbulence/blob/main/DISS%20STA.pdf)**
 
 ---
 
