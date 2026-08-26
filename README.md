@@ -37,13 +37,13 @@ A particular focus was placed on solutions extending into the high-dissipation r
 Two of the recovered relative periodic orbits, **R3 and R4**, reach
 
 $$
-\frac{D}{D_{\mathrm{lam}}} = 0.1905
+\bar D = 0.1905
 $$
 
 and
 
 $$
-\frac{D}{D_{\mathrm{lam}}} = 0.1928,
+\bar D = 0.1928,
 $$
 
 respectively.
