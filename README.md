@@ -68,6 +68,14 @@ The computational workflow can be summarised as:
 4. Classify and analyse the converged solutions 
 
 ---
+## Visualisations
+
+### P1 — Periodic Orbit
+
+Vorticity evolution shown alongside the trajectory of **P1** in the $I-D$ plane. The grey background represents the DNS probability distribution.
+
+[**▶ View animation**](PO_vorticity_DI_LinkedIn.mp4)
+
 
 ## Dissertation
 
