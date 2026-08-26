@@ -88,20 +88,6 @@ This project builds on previous work on recurrent and invariant solutions in tur
 - Redfern, Lazer & Lucas (2024), work investigating dynamically relevant recurrent flows and high-dissipation events.
 
 ---
-## Code
-
-The main computational work was carried out in Python.
-
-The repository contains the relevant notebooks and Python scripts used for:
-
-- DNS analysis,
-- recurrence detection,
-- invariant-solution searches,
-- vorticity reconstruction,
-- dissipation/input calculations,
-- and visualisation.
-
----
 
 ## Acknowledgements
 
